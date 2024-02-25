@@ -1,0 +1,136 @@
+;PROJECT=CATTP - PROJECT
+
+
+;natural source
+SOURCE A1
+ DIRECTIVITY = "omni"
+ POS = x(6) y(6)-1.00 1.60
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A2
+ DIRECTIVITY = "omni"
+ POS = x(21) y(21) 1.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A3
+ DIRECTIVITY = "omni"
+ POS = x(1202)+1.00 y(1202)-1.00 1.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A4
+ DIRECTIVITY = "omni"
+ POS = x(1102)-1.00 y(1102) z(1102)+1.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A5
+ DIRECTIVITY = "omni"
+ POS = x(216) y(216) z(216)+0.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A6
+ DIRECTIVITY = "omni"
+ POS = x(1202)+1.00 y(6) 1.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A7
+ DIRECTIVITY = "omni"
+ POS = 0 y(23)+2.00 z(23)+1.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A8
+ DIRECTIVITY = "omni"
+ POS = x(37)+0.70 y(81) 1.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE A9
+ DIRECTIVITY = "omni"
+ POS = x(37)+0.70 y(216) z(216)+0.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE B1
+ DIRECTIVITY = "omni"
+ POS = x(76)+0.50 y(76) z(76)+0.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+SOURCE B2
+ DIRECTIVITY = "omni"
+ POS = x(219) y(219) z(219)+0.55
+ ;AIMPOS = 0.0 5.0 1.7
+ AIMANGLES = 0 0 
+ Lp1m_a = Lp_voice_normal ;speech input
+END
+
+;e-a source with line input
+;SOURCE B0
+ ;DIRECTIVITY = "catt.sd1"
+ ;POS = -2.0 3.0 3.7
+ ;AIMPOS = 0.0 7.0 1.7
+ ;AIMANGLES = 0 0 
+ ;LvIn = Lv_pink 9  ;pink input 9 dBV all bands
+ ;GAIN = <0 0 0 0 0 0 : 0 0>
+;END
+
+;e-a source with mic input
+;SOURCE B1
+ ;DIRECTIVITY = "catt.sd1"
+ ;POS = 2.0 3.0 3.7 
+ ;AIMPOS = 0.0 7.0 1.7
+ ;AIMANGLES = 0 0 
+ ;Lp1m_a = Lp_voice_normal ;speech mic input
+ ;MICSENSITIVITY = -60
+ ;GAIN = <0 0 0 0 0 0 : 0 0>
+;END
+
+RETURN
+
+;for projects that need to use TUCT v1:
+
+SOURCEDEFS
+
+; a natural source
+;id   position    directivity  aim-position [roll]
+ A0  0.0 3.0 1.7     OMNI      0.0 5.0 1.7
+ Lp1m_a   = Lp_white 94 ; white spectrum, 94 dB at 1kHz
+
+; an electro-acoustical source (syntax 1 specifying Gain_a)
+ B0  -2.0 3.0 3.7  Catt.SD0  0.0 7.0 1.7
+ Lp1m_a   = Lp_voice_normal
+ Gain_a   = <20 20 20 20 20 20> ; calculates Lp1m_ea
+ Delay_e  = 0
+
+; an electro-acoustical source (syntax 2 specifying Lp1m_ea)
+ B1   2.0 3.0 3.7  Catt.SD0  0.0 7.0 1.7
+ Lp1m_a   = Lp_voice_normal
+ Lp1m_ea  = <75 80 82 85 88 88>  ; at 1m on source axis
+ Delay_e  = 0
+
